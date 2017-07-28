@@ -19,6 +19,7 @@
 4. mob programming will be a blocker solution
 5. If after 15 minutes of mob programming, the blocker is not resolved, we will go to the TAs.
 
+
 # Git Process
 
 1. Small chunks, commit often, push often, create pull requests often, group approval for any merge to master, merge every one to two hours, and pull party after merging
@@ -28,3 +29,4 @@
 
 1. We will manually deploy to ensure all features are working
 2. Everyone should have access to Heroku
+3. Latest first deploy Tuesday . . .
