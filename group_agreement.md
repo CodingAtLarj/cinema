@@ -8,7 +8,7 @@
 
 # CONFLICT PLAN
 1. Patience and understanding will lead our approach to conflicts
-2.Any conflicts lasting more than 5 minutes should be listed as a blocker.
+2. Any conflicts lasting more than 5 minutes should be listed as a blocker.
 3. Short breaks encouraged to mitigate tension that can lead to conflicts
 
 # WORK PLAN
