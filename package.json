@@ -1,0 +1,24 @@
+{
+  "name": "cinema",
+  "version": "1.0.0",
+  "description": "our next netflix",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CodingAtLarj/cinema.git"
+  },
+  "author": "rami, jose, ashwini, la",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CodingAtLarj/cinema/issues"
+  },
+  "homepage": "https://github.com/CodingAtLarj/cinema#readme",
+  "dependencies": {
+    "express": "^4.15.3",
+    "express-request-proxy": "^2.0.0"
+  }
+}
