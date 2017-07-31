@@ -10,11 +10,11 @@ class User {
 }
 
 class Movie {
-  constructor(categorie, name, releasedate, movieid, photo) {
-    this.categorie = categorie,
+  constructor(movieid, category, name, releasedate, urlphoto) {
+    this.category = category,
     this.name = name,
     this.releasedate = releasedate,
     this.movieid = movieid,
-    this.photo = photo
+    this.urlphoto = urlphoto
   }
 }

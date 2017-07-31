@@ -37,15 +37,42 @@ app.get('/github/*', function(req, res) {
   }))(req, res);
 })
 
-
-
-function loadDb(){
-  students.query(
-    CREATE TABLE IF NOT EXISTS
-    students()
-  )
+function loadMoviesFromJSON(){
+  // THis is going to load the moves from a JSON file into the DB.
 }
 
+/// TODO Load the users from the github repo and insert them in the DB and update if it doesnt exist.
+function loadUsersFromRepo(){
+}
+
+function loadDb(){
+  // USER Creation
+  dbClient.query(
+    `CREATE TABLE IF NOT EXISTS
+       users (
+         userid SERIAL PRIMARY KEY,
+         urlphoto VARCHAR(255) NOT NULL,
+         name VARCHAR (255) NOT NULL,
+         course VARCHAR (255) NOT NULL
+    `
+  ) .then(loadUsersFromRepo)
+  .catch(console.error);
+
+  // Get the hard coded Movies JSON file and put it in the database
+  dbClient.query(
+    `CREATE TABLE IF NOT EXISTS
+       movies (
+         movieid SERIAL PRIMARY KEY,
+         category VARCHAR(255) NULL,
+         name VARCHAR(255) NULL,
+         releasedate DATE,
+         urlphoto VARCHAR(255) NULL,
+    `
+  ) .then(loadMoviesFromJSON)
+  .catch(console.error);
+}
+
+loadDb();
 app.get('*', function(req, res) {
   res.sendFile('./index.html');
 })
