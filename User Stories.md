@@ -2,7 +2,7 @@
 
 MVP
 
-User Story:
+## User Story:
  
 As a student, I would like to know which students share my movie interests and get to know about my choice of movies. 
 
@@ -25,7 +25,7 @@ As a movie enthusiast I would like the app to show me the new releases movies an
 As a user I would like to see a list of which movies other users liked.
 
 
-Stretch goal:
+## Stretch goal:
 
 As member of the Code fellows school I want to get to know other code fellows who may be in different classes because this will allow me to make carrier relationship that may come handy in the future.
 
