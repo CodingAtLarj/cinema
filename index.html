@@ -5,26 +5,32 @@
     <title>Cinema</title>
     <link rel="stylesheet" href="/vendor/reset.css">
     <link rel="stylesheet" href="/css/base.css">
-    <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/layout.css">
     <link rel="stylesheet" href="/css/module.css">
   </head>
   <body>
 <header>
+  <nav class="nav-main">
+    <div class="menu"></div>
+    <div id="nav-menu">
+      <div class="tab" data-content="home"><a href="/" class="home">Home</a></div>
+      <div class="tab" data-content="results"><a href="#">Results</a></div>
+      <div class="tab" data-content="about"><a href="/">About</a></div>
+  </nav>
+  <h2>Choose your profile picture</h2>
   <div id="menu"></div>
      <ul id="nav-menu" class="nav-ul">
   <script id="pic-template" type="text/x-handlebars-template">
   <img class="images src="{{photos}}
   </script>
   <div class="profile"  a href="#">
-    <section id="user-pics">
+    <section id="user-pictures">
     <div class="">
-
     </div>
     </section>
   </div>
 </header>
-<script src="/scripts/model/model.js"></script>
+<script src="/scripts/models/model.js"></script>
 <script src=""></script>
 <script src=""></script>
   </body>
