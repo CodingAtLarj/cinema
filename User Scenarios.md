@@ -1,4 +1,4 @@
-##User Scenario:
+## User Scenario:
 
 Stephanie is a teacher at a prominent boot camp in sunny Seattle during the summer. She loves the outdoors and teaching. She is starting a new class  and wants to help her students get connected with each other. She wants to do this in a fun way by using new movies as a way for her students to find out everybody's github username.
 
