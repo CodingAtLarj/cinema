@@ -1,5 +1,4 @@
 # User Stories:
-----------------
 
 ## User Story:
  
