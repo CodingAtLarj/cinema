@@ -25,8 +25,8 @@
 
 ## Stretch goal:
 
-As member of the Code fellows school I want to get to know other code fellows who may be in different classes because this will allow me to make carrier relationship that may come handy in the future.
+* As member of the Code fellows school I want to get to know other code fellows who may be in different classes because this will allow me to make carrier relationship that may come handy in the future.
 
-As student and a teacher it would be fun to playing a guessing game based on the profile picture from github. As a teacher this will help me make sure that all students have identifiable photos in the github profile.
+* As student and a teacher it would be fun to playing a guessing game based on the profile picture from github. As a teacher this will help me make sure that all students have identifiable photos in the github profile.
 
-As a student, I would like to hang out with my classmates and plan some fun activity over the weekend. As a user I would like to know which movies are coming soon so I can plan which one I would go to.
+* As a student, I would like to hang out with my classmates and plan some fun activity over the weekend. As a user I would like to know   which movies are coming soon so I can plan which one I would go to.
