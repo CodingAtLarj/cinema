@@ -40,6 +40,11 @@ app.get('/github/*', function(req, res) {
   }))(req, res);
 })
 
+app.post('addFavorite',function (req, res) {
+  let userid = req.userid
+  let movieid = req.movieid
+  dbClient.query(`INSERT INTO favorites (userid, movieid, dateliked) VALUES ($1, $2, $3) ON CONFLICT DO NOTHING;`,[req.userid, req.movieid, new Date()]).catch(console.error)
+}
 
 function getMoviesFromApi() {
   request.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.MOVIEDBTOKEN}&language=en-US&page=1`).end(function(err, res) {
