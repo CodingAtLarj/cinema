@@ -7,7 +7,7 @@ const proxyRequest = require('express-request-proxy');
 const bodyParser = require('body-parser');
 // windows and Linux `postgres://postgres:${process.env.PG_PASSWORD}@localhost:5432/kilovolt`
 //MAC connection string `postgres://localhost:5432/kilovolt`;
-const DATABASE_URL = process.env.DATABASE_URL ||`postgres://localhost:5432/kilovolt`;
+const DATABASE_URL = process.env.DATABASE_URL || `postgres://postgres:${process.env.PG_PASSWORD}@localhost:5432/kilovolt`;
 //requiring pg: your postgres
 const pg = require('pg');
 
@@ -52,7 +52,7 @@ function processSlackResponse(channel,allUsers){
     }
     return false;
   })
-  console.log(class301Users)
+  class301Users.forEach(insertUsersIntoDb);
 }
 function fetchUsersFromSlack(){
   // This can be used to support additional channels or classrooms:
@@ -77,7 +77,7 @@ function loadDb(){
        users (
          userid SERIAL PRIMARY KEY,
          urlphoto VARCHAR(255) NOT NULL,
-         name VARCHAR (255) NOT NULL,
+         name VARCHAR (255) UNIQUE NOT NULL,
          course VARCHAR (255) NOT NULL
        );
     `
@@ -109,6 +109,19 @@ function loadDb(){
     `
   ).catch(console.error);
 }
+
+//this take our user object from the returning slack api call
+function insertUsersIntoDb(slackUser) {
+  dbClient.query(
+    `INSERT INTO users (name, urlphoto, course) VALUES ($1, $2, $3) ON CONFLICT DO NOTHING `,
+    [slackUser.real_name, slackUser.profile.image_512, 'seattle-301d27']
+  ), function (err) {
+    if (err) {
+      console.error(err);
+    }
+  }
+}
+
 
 loadDb();
 app.get('*', function(req, res) {
