@@ -22,6 +22,11 @@ dbClient.on('error', function(err){
 
 const app = express();
 
+let wwwhisper = require('connect-wwwhisper');
+// app holds a reference to express or connect framework, it
+// may be named differently in your source file.
+app.use(wwwhisper());
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
