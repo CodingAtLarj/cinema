@@ -22,11 +22,6 @@ dbClient.on('error', function(err){
 
 const app = express();
 
-let wwwhisper = require('connect-wwwhisper');
-// app holds a reference to express or connect framework, it
-// may be named differently in your source file.
-app.use(wwwhisper());
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
@@ -49,12 +44,15 @@ function loadMoviesFromJSON(){
 
 /// TODO Load the users from the github repo and insert them in the DB and update if it doesnt exist.
 
-function loadUsersFromRepo(){
-  console.log('This is running now')
+function fetchUsersFromSlack(){
+  // This can be used to support additional channels or classrooms:
+  // let channelsListUrl = `https://slack.com/api/channels.list?token=${SLACKTOKEN}&pretty=1`
+  let classroom_id = 'C5WHR2FNG'
+  let channelsInfoUrl = `https://slack.com/api/channels.info?token=${process.env.SLACKTOKEN}&channel=${classroom_id}&pretty=1`
+  let usersListUrl = `https://slack.com/api/users.list?token=${process.env.SLACKTOKEN}&pretty=1 `
   let request = require('superagent');
-  request.get('https://api.github.com/users/masters3d').end( function(err, res){
-    console.log(res.body)
-    console.log(new Date())
+  request.get(channelsInfoUrl).end( function(err, res){
+    console.log(res.body);
   })
 }
 
@@ -69,7 +67,7 @@ function loadDb(){
          course VARCHAR (255) NOT NULL
        );
     `
-  ) .then(loadUsersFromRepo)
+  ) .then(fetchUsersFromSlack)
   .catch(console.error);
 
   // Get the hard coded Movies JSON file and put it in the database
