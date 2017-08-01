@@ -1,7 +1,7 @@
 'use strict';
 
 const express = require('express');
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 const proxyRequest = require('express-request-proxy');
 //bodyParser help returning json objects
 const bodyParser = require('body-parser');
@@ -55,7 +55,8 @@ function loadDb(){
          userid SERIAL PRIMARY KEY,
          urlphoto VARCHAR(255) NOT NULL,
          name VARCHAR (255) NOT NULL,
-         course VARCHAR (255) NOT NULL);
+         course VARCHAR (255) NOT NULL
+       );
     `
   ) .then(loadUsersFromRepo)
   .catch(console.error);
@@ -68,10 +69,21 @@ function loadDb(){
          category VARCHAR(255) NULL,
          name VARCHAR(255) NULL,
          releasedate DATE,
-         urlphoto VARCHAR(255) NULL);
+         urlphoto VARCHAR(255) NULL
+       );
     `
   ) .then(loadMoviesFromJSON)
   .catch(console.error);
+
+  dbClient.query(
+    `CREATE TABLE IF NOT EXISTS
+       usermovies (
+         id SERIAL PRIMARY KEY,
+         movieid INTEGER NOT NULL REFERENCES movies(movieid),
+         userid INTEGER NOT NULL REFERENCES users(userid)
+       );
+    `
+  ).catch(console.error);
 }
 
 loadDb();
