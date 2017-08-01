@@ -5,9 +5,11 @@ const PORT = process.env.PORT || 3000;
 const proxyRequest = require('express-request-proxy');
 //bodyParser help returning json objects
 const bodyParser = require('body-parser');
+//requiring super agent for back end node
+let request = require('superagent');
 // windows and Linux `postgres://postgres:${process.env.PG_PASSWORD}@localhost:5432/kilovolt`
 //MAC connection string `postgres://localhost:5432/kilovolt`;
-const DATABASE_URL = process.env.DATABASE_URL || `postgres://localhost:5432/kilovolt`;
+const DATABASE_URL = process.env.DATABASE_URL || `postgres://postgres:${process.env.PG_PASSWORD}@localhost:5432/kilovolt`;
 //requiring pg: your postgres
 const pg = require('pg');
 
@@ -38,8 +40,21 @@ app.get('/github/*', function(req, res) {
   }))(req, res);
 })
 
-function loadMoviesFromJSON(){
-  // THis is going to load the moves from a JSON file into the DB.
+
+function getMoviesFromApi() {
+  request.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.MOVIEDBTOKEN}&language=en-US&page=1`).end(function(err, res) {
+    processMoviesResponse(res.body)
+  })
+}
+
+function processMoviesResponse(moviesResponse) {
+  moviesResponse.results.forEach(function(movie){
+    let url = 'https://image.tmdb.org/t/p/w500' + movie.poster_path
+    console.log(url);
+    dbClient.query(`INSERT INTO movies (category, name, releasedate, urlphoto) VALUES ($1, $2, $3, $4) ON CONFLICT DO NOTHING;`,
+    ['Now Playing', movie.title, movie.release_date, url]
+      )
+  })
 }
 
 /// TODO Load the users from the github repo and insert them in the DB and update if it doesnt exist.
@@ -56,8 +71,6 @@ function processSlackResponse(channel,allUsers){
       return false;
     }
   })
-  console.log(class301MemberIDs)
-  console.log(class301Users)
   class301Users.forEach(insertUsersIntoDb);
 }
 function fetchUsersFromSlack(){
@@ -66,7 +79,6 @@ function fetchUsersFromSlack(){
   let classroom_id = 'C5WHR2FNG'
   let channelsInfoUrl = `https://slack.com/api/channels.info?token=${process.env.SLACKTOKEN}&channel=${classroom_id}&pretty=1`
   let usersListUrl = `https://slack.com/api/users.list?token=${process.env.SLACKTOKEN}&pretty=1 `
-  let request = require('superagent');
   request.get(channelsInfoUrl).end( function(err, res){
     let channelResponse = res.body
     request.get(usersListUrl)
@@ -101,7 +113,7 @@ function loadDb(){
          urlphoto VARCHAR(255) NULL
        );
     `
-  ) .then(loadMoviesFromJSON)
+  ) .then(getMoviesFromApi)
   .catch(console.error);
 
   dbClient.query(
