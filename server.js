@@ -7,7 +7,7 @@ const proxyRequest = require('express-request-proxy');
 const bodyParser = require('body-parser');
 // windows and Linux `postgres://postgres:${process.env.PG_PASSWORD}@localhost:5432/kilovolt`
 //MAC connection string `postgres://localhost:5432/kilovolt`;
-const DATABASE_URL = process.env.DATABASE_URL ||`postgres://localhost:5432/kilovolt`;
+const DATABASE_URL = process.env.DATABASE_URL || `postgres://localhost:5432/kilovolt`;
 //requiring pg: your postgres
 const pg = require('pg');
 
@@ -48,11 +48,17 @@ function processSlackResponse(channel,allUsers){
   let allUsersJSON = allUsers.members
   let class301Users = allUsersJSON.filter(function(user) {
     if(class301MemberIDs.includes(user.id)){
+      if (user.deleted === true || user.real_name === '') {
+        return false;
+      }
       return true;
+    } else {
+      return false;
     }
-    return false;
   })
+  console.log(class301MemberIDs)
   console.log(class301Users)
+  class301Users.forEach(insertUsersIntoDb);
 }
 function fetchUsersFromSlack(){
   // This can be used to support additional channels or classrooms:
@@ -77,7 +83,7 @@ function loadDb(){
        users (
          userid SERIAL PRIMARY KEY,
          urlphoto VARCHAR(255) NOT NULL,
-         name VARCHAR (255) NOT NULL,
+         name TEXT UNIQUE NOT NULL,
          course VARCHAR (255) NOT NULL
        );
     `
@@ -90,7 +96,7 @@ function loadDb(){
        movies (
          movieid SERIAL PRIMARY KEY,
          category VARCHAR(255) NULL,
-         name VARCHAR(255) NULL,
+         name TEXT UNIQUE NOT NULL,
          releasedate DATE,
          urlphoto VARCHAR(255) NULL
        );
@@ -109,6 +115,20 @@ function loadDb(){
     `
   ).catch(console.error);
 }
+
+//this take our user object from the returning slack api call
+function insertUsersIntoDb(slackUser) {
+  let imageUrl = slackUser.profile.image_original || slackUser.profile.image_1024 || slackUser.profile.image_512 || slackUser.profile.image_192 || slackUser.profile.image_72
+  dbClient.query(
+    `INSERT INTO users (name, urlphoto, course) VALUES ($1, $2, $3) ON CONFLICT DO NOTHING `,
+    [slackUser.real_name, imageUrl, 'seattle-301d27']
+  ), function (err) {
+    if (err) {
+      console.error(err);
+    }
+  }
+}
+
 
 loadDb();
 app.get('*', function(req, res) {
