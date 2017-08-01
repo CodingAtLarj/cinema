@@ -7,17 +7,26 @@
     <link rel="stylesheet" href="/css/base.css">
     <link rel="stylesheet" href="/css/layout.css">
     <link rel="stylesheet" href="/css/module.css">
+    <link rel="stylesheet" href="/css/state.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
   </head>
   <body>
 <header>
   <nav class="nav-main">
-    <div class="menu"></div>
-    <div id="nav-menu">
-      <div class="tab" data-content="home"><a href="/" class="home">Home</a></div>
-      <div class="tab" data-content="results"><a href="#">Results</a></div>
-      <div class="tab" data-content="about"><a href="/">About</a></div>
+    <div class="icon-menu"><i class="fa fa-bars fa-lg"></i></div>
+    <ul id="nav-menu" class="nav-ul">
+      <li class="tab" data-content="home"><a href="/" class="icon-home">Home</a></li>
+      <li class="tab" data-content="results"><a href="#">Results</a></li>
+      <li class="tab" data-content="about"><a href="/"> About</a></li>
+    </ul>
   </nav>
-  <h2>Choose your profile picture</h2>
+  <div id="main-action">
+    <h2>Choose your profile picture</h2>
+  </div>
+
+  <div id="carousel-container">
+    <div id="pic-carousel">Popular Movies</div>
+  </div>
   <div id="menu"></div>
      <ul id="nav-menu" class="nav-ul">
   <script id="pic-template" type="text/x-handlebars-template">
