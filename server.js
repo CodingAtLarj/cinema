@@ -6,7 +6,8 @@ const proxyRequest = require('express-request-proxy');
 //bodyParser help returning json objects
 const bodyParser = require('body-parser');
 // windows and Linux `postgres://postgres:${process.env.PG_PASSWORD}@localhost:5432/kilovolt`
-const DATABASE_URL = process.env.DATABASE_URL || `postgres://localhost:5432/kilovolt`;
+const DATABASE_URL = process.env.DATABASE_URL || `postgres://postgres:${process.env.PG_PASSWORD}@localhost:5432/kilovolt`
+// `postgres://localhost:5432/kilovolt`;
 //requiring pg: your postgres
 const pg = require('pg');
 
@@ -24,13 +25,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-
-
 app.use(express.static('.'));
-
-app.get(`/doStuff`, function(req, res){
-  loadUsers(res)
-})
 
 app.get('/github/*', function(req, res) {
   let headers = process.env.GITHUB_TOKEN ? {
@@ -48,16 +43,6 @@ function loadMoviesFromJSON(){
 }
 
 /// TODO Load the users from the github repo and insert them in the DB and update if it doesnt exist.
-
-function loadUsers(response){
-  console.log('This is running now')
-  let request = require('superagent');
-  request.get('https://api.github.com/users/masters3d').end( function(err, res){
-    console.log(res.body)
-    console.log(new Date())
-    response.send(res.body);
-  })
-}
 
 function loadUsersFromRepo(){
   console.log('This is running now')
@@ -98,10 +83,11 @@ function loadDb(){
 
   dbClient.query(
     `CREATE TABLE IF NOT EXISTS
-       usermovies (
+       favorites (
          id SERIAL PRIMARY KEY,
+         userid INTEGER NOT NULL REFERENCES users(userid),
          movieid INTEGER NOT NULL REFERENCES movies(movieid),
-         userid INTEGER NOT NULL REFERENCES users(userid)
+         dateliked DATE
        );
     `
   ).catch(console.error);
