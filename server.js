@@ -5,7 +5,8 @@ const PORT = process.env.PORT || 5000;
 const proxyRequest = require('express-request-proxy');
 //bodyParser help returning json objects
 const bodyParser = require('body-parser');
-const DATABASE_URL = process.env.DATABASE_URL || `postgres://postgres:${process.env.PG_PASSWORD}@localhost:5432/kilovolt`;
+// windows and Linux `postgres://postgres:${process.env.PG_PASSWORD}@localhost:5432/kilovolt`
+const DATABASE_URL = process.env.DATABASE_URL || `postgres://localhost:5432/kilovolt`;
 //requiring pg: your postgres
 const pg = require('pg');
 
@@ -75,7 +76,7 @@ function loadDb(){
 
 loadDb();
 app.get('*', function(req, res) {
-  res.sendFile('./index.html');
+  res.sendFile('index.html', {root: './'});
 })
 
 app.listen(PORT, function() {
