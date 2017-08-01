@@ -28,6 +28,10 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(express.static('.'));
 
+app.get(`/doStuff`, function(req, res){
+  loadUsers(res)
+})
+
 app.get('/github/*', function(req, res) {
   let headers = process.env.GITHUB_TOKEN ? {
     Authorization: `token ${process.env.GITHUB_TOKEN}`
@@ -44,7 +48,24 @@ function loadMoviesFromJSON(){
 }
 
 /// TODO Load the users from the github repo and insert them in the DB and update if it doesnt exist.
+
+function loadUsers(response){
+  console.log('This is running now')
+  let request = require('superagent');
+  request.get('https://api.github.com/users/masters3d').end( function(err, res){
+    console.log(res.body)
+    console.log(new Date())
+    response.send(res.body);
+  })
+}
+
 function loadUsersFromRepo(){
+  console.log('This is running now')
+  let request = require('superagent');
+  request.get('https://api.github.com/users/masters3d').end( function(err, res){
+    console.log(res.body)
+    console.log(new Date())
+  })
 }
 
 function loadDb(){
