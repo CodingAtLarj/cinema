@@ -45,12 +45,11 @@ function loadMoviesFromJSON(){
 /// TODO Load the users from the github repo and insert them in the DB and update if it doesnt exist.
 
 function fetchUsersFromSlack(){
-  let slackToken = process.env.SLACKTOKEN
   // This can be used to support additional channels or classrooms:
   // let channelsListUrl = `https://slack.com/api/channels.list?token=${SLACKTOKEN}&pretty=1`
   let classroom_id = 'C5WHR2FNG'
-  let channelsInfoUrl = `https://slack.com/api/channels.info?token=${SLACKTOKEN}&channel=${classroom_id}&pretty=1`
-  let usersListUrl = `https://slack.com/api/users.list?token=${SLACKTOKEN}&pretty=1 `
+  let channelsInfoUrl = `https://slack.com/api/channels.info?token=${process.env.SLACKTOKEN}&channel=${classroom_id}&pretty=1`
+  let usersListUrl = `https://slack.com/api/users.list?token=${process.env.SLACKTOKEN}&pretty=1 `
   let request = require('superagent');
   request.get(channelsInfoUrl).end( function(err, res){
     console.log(res.body);
