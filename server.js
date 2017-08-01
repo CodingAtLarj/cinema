@@ -6,8 +6,8 @@ const proxyRequest = require('express-request-proxy');
 //bodyParser help returning json objects
 const bodyParser = require('body-parser');
 // windows and Linux `postgres://postgres:${process.env.PG_PASSWORD}@localhost:5432/kilovolt`
-const DATABASE_URL = process.env.DATABASE_URL || `postgres://postgres:${process.env.PG_PASSWORD}@localhost:5432/kilovolt`
-// `postgres://localhost:5432/kilovolt`;
+//MAC connection string `postgres://localhost:5432/kilovolt`;
+const DATABASE_URL = process.env.DATABASE_URL ||`postgres://localhost:5432/kilovolt`;
 //requiring pg: your postgres
 const pg = require('pg');
 
@@ -43,7 +43,17 @@ function loadMoviesFromJSON(){
 }
 
 /// TODO Load the users from the github repo and insert them in the DB and update if it doesnt exist.
-
+function processSlackResponse(channel,allUsers){
+  let class301MemberIDs = channel.channel.members
+  let allUsersJSON = allUsers.members
+  let class301Users = allUsersJSON.filter(function(user) {
+    if(class301MemberIDs.includes(user.id)){
+      return true;
+    }
+    return false;
+  })
+  console.log(class301Users)
+}
 function fetchUsersFromSlack(){
   // This can be used to support additional channels or classrooms:
   // let channelsListUrl = `https://slack.com/api/channels.list?token=${SLACKTOKEN}&pretty=1`
@@ -52,7 +62,11 @@ function fetchUsersFromSlack(){
   let usersListUrl = `https://slack.com/api/users.list?token=${process.env.SLACKTOKEN}&pretty=1 `
   let request = require('superagent');
   request.get(channelsInfoUrl).end( function(err, res){
-    console.log(res.body);
+    let channelResponse = res.body
+    request.get(usersListUrl)
+   .end(function(err,res){
+     processSlackResponse(channelResponse,res.body)
+   })
   })
 }
 
