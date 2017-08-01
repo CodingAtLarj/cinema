@@ -1,0 +1,17 @@
+#main-action {
+  text-align: center;
+}
+
+#carousel-container {
+   text-align: center;
+}
+
+#pic-carousel {
+  width: 90%;
+  height: 200px;
+  border: 2px solid #eee;
+  border-radius: 20px;
+  background-color: #feeeff;
+  display: inline-block;
+  margin-top: 60px;
+}
