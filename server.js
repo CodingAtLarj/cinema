@@ -85,6 +85,9 @@ app.get('/getAllUsers',function(req,res){
 .catch(console.error);
 });
 
+app.get('/getMovie/:id', function(req, res){
+  dbClient.query(`SELECT * from movies where movieid=$1`, [req.params.id]).then(results => res.send(results.rows))
+})
 
 //GET 12 MOVIES FROM LIST OF API MOVIES
 app.get('/get12movies', function(req, res) {
