@@ -1,28 +1,29 @@
 'use strict';
 
 
-function getFavorites(){
-  $.getJSON('/getPeopleMoviesFavCount') .then(function(favorites){
+function getFavorites() {
+  $.getJSON('/getPeopleMoviesFavCount').then(function(favorites) {
     let dictionary = {}
-    favorites.forEach(function(favObj){
-      let value = dictionary[favObj.movieid] ? dictionary[favObj.movieid] : []
-      value.push(favObj.userid)
-      dictionary[favObj.movieid] = value
-    });
-    console.log(dictionary);
-  })
-
-
+    let value = dictionary[favObj.movieid] ? dictionary[favObj.movieid] : []
+    value.push(favObj.userid)
+    dictionary[favObj.movieid] = value
+  });
+  createResultsList(dictionary);
 }
 
 
+
 getFavorites();
-// function createResultsList(favorites) {
-//   let container = $(document.createElement('div'))
-//   let mainContainer = container.clone();
-//   mainContainer.attr('id','resultsList');
-//   favorites.forEach(function(fav){
-//     let favContainer = container.clone();
-//
-//
-// }
+
+function createResultsList(dictionary) {
+  let container = $(document.createElement('div'))
+  let mainContainer = container.clone();
+  mainContainer.attr('id','resultsList');
+  for(let movieid in dictionary) {
+    let userIds = dictionary[movieid]
+  }
+
+
+
+
+}
