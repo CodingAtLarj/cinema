@@ -44,6 +44,14 @@ app.get('/github/*', function(req, res) {
   }))(req, res);
 })
 
+app.get('/getPeopleMoviesFavCount', function(req, res) {
+  dbClient.query(
+    `SELECT userid,  movieid, COUNT(*) FROM favorites GROUP BY userid, movieid;`
+  )
+  .then(results => res.send(results.rows))
+  .catch(console.error);
+});
+
 //POST FOVORITES TO FAVORITES TABLE
 app.post('/addFavorite', function(req, res) {
   dbClient.query(
