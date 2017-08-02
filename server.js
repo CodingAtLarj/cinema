@@ -44,11 +44,19 @@ app.get('/github/*', function(req, res) {
   }))(req, res);
 })
 
-//POST FOVORITES TO FAVORITES TABLE
-app.post('addFavorite', function(req, res) {
+app.get('/getPeopleMoviesFavCount', function(req, res) {
   dbClient.query(
-    `INSERT INTO favorites (userid, movieid, dateliked) VALUES ($1, $2, $3) ON CONFLICT DO NOTHING;`, [req.userid, req.movieid, new Date()]
-  ).catch(console.error)
+    `SELECT userid,  movieid, COUNT(*) FROM favorites GROUP BY userid, movieid;`
+  )
+  .then(results => res.send(results.rows))
+  .catch(console.error);
+});
+
+//POST FOVORITES TO FAVORITES TABLE
+app.post('/addFavorite', function(req, res) {
+  dbClient.query(
+    `INSERT INTO favorites (userid, movieid, dateliked) VALUES ($1, $2, $3) ON CONFLICT DO NOTHING;`, [req.headers.userid, req.headers.movieid, new Date()]
+  ).then(() => res.send('Update complete')).catch(() => res.send('Update failed'))
 })
 
 function getMoviesFromApi() {
