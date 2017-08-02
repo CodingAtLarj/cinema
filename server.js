@@ -54,6 +54,55 @@ function getMoviesFromApi() {
   })
 }
 
+
+//=========================================JOSE+ASH========================================================
+
+
+// GET ALL FAVORITES LIKES
+
+
+
+// GET ALL USERS WITH THEIR FAVORITES MOVIES
+
+
+
+
+
+
+
+
+//=========================================END=============================================================
+
+
+
+
+
+//=========================================RAMI+LA========================================================
+
+//GET 12 MOVIES FROM LIST OF API MOVIES
+
+
+
+
+//POST FOVORITES TO FAVORITES TABLE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//=========================================END=============================================================
+
 function processMoviesResponse(moviesResponse) {
   moviesResponse.results.forEach(function(movie){
     let url = 'https://image.tmdb.org/t/p/w500' + movie.poster_path
