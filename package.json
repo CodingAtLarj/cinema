@@ -23,5 +23,8 @@
     "express-request-proxy": "^2.0.0",
     "pg": "^7.0.2",
     "superagent": "^3.5.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
   }
 }

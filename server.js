@@ -7,9 +7,11 @@ const proxyRequest = require('express-request-proxy');
 const bodyParser = require('body-parser');
 //requiring super agent for back end node
 let request = require('superagent');
-// windows and Linux `postgres://postgres:${process.env.PG_PASSWORD}@localhost:5432/kilovolt`
-//MAC connection string `postgres://localhost:5432/kilovolt`;
-const DATABASE_URL = process.env.DATABASE_URL || `postgres://postgres:${process.env.PG_PASSWORD}@localhost:5432/kilovolt`;
+
+// This will choose the correct scheme given the plattomr. darwin here means mac.
+let localdbURL = 'postgres://' + ( process.platform === 'darwin' ? '' : `postgres:${process.env.PG_PASSWORD}@` ) + 'localhost:5432/kilovolt'
+
+const DATABASE_URL = process.env.DATABASE_URL || localdbURL;
 //requiring pg: your postgres
 const pg = require('pg');
 
@@ -41,10 +43,10 @@ app.get('/github/*', function(req, res) {
 })
 
 app.post('addFavorite',function (req, res) {
-  let userid = req.userid
-  let movieid = req.movieid
-  dbClient.query(`INSERT INTO favorites (userid, movieid, dateliked) VALUES ($1, $2, $3) ON CONFLICT DO NOTHING;`,[req.userid, req.movieid, new Date()]).catch(console.error)
-}
+  dbClient.query(
+    `INSERT INTO favorites (userid, movieid, dateliked) VALUES ($1, $2, $3) ON CONFLICT DO NOTHING;`,[req.userid, req.movieid, new Date()]
+).catch(console.error)
+})
 
 function getMoviesFromApi() {
   request.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${process.env.MOVIEDBTOKEN}&language=en-US&page=1`).end(function(err, res) {
@@ -55,7 +57,6 @@ function getMoviesFromApi() {
 function processMoviesResponse(moviesResponse) {
   moviesResponse.results.forEach(function(movie){
     let url = 'https://image.tmdb.org/t/p/w500' + movie.poster_path
-    console.log(url);
     dbClient.query(`INSERT INTO movies (category, name, releasedate, urlphoto) VALUES ($1, $2, $3, $4) ON CONFLICT DO NOTHING;`,
     ['Now Playing', movie.title, movie.release_date, url]
       )
