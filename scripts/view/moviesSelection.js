@@ -2,9 +2,12 @@
 
 function getMovies(){
   $.getJSON('/get12movies') .then(function(moviesjson){
-    moviesjson.forEach(function(movie){
-      console.log(movie);
-    })
+    createMovieList(moviesjson);
   })
 }
 getMovies();
+
+function createMovieList(movies){
+  let container = $(document.createElement('div'))
+  console.log(container);
+}
