@@ -58,44 +58,30 @@ function getMoviesFromApi() {
 }
 
 
-//=========================================JOSE+ASH========================================================
-
-
 // GET ALL FAVORITES LIKES
 
-
+app.get('/getUserFavorites',function(req,res){
+  dbClient.query(
+    'SELECT * from favorites;'
+)
+.then(results => res.send(results.rows))
+.catch(console.error);
+});
 
 // GET ALL USERS WITH THEIR FAVORITES MOVIES
+app.get('/getAllUsers',function(req,res){
+  dbClient.query(
+    `SELECT * from users;`
+)
+.then(results => res.send(results.rows))
+.catch(console.error);
+});
 
-
-
-
-
-
-
-
-//=========================================END=============================================================
-
-
-
-
-
-//=========================================RAMI+LA========================================================
 
 //GET 12 MOVIES FROM LIST OF API MOVIES
 app.get('/get12movies', function(req, res) {
   dbClient.query(`SELECT * FROM movies ORDER BY releasedate DESC LIMIT 12;`).then(results => res.send(results.rows))
 })
-
-
-
-
-
-
-
-
-
-//=========================================END=============================================================
 
 function processMoviesResponse(moviesResponse) {
   moviesResponse.results.forEach(function(movie) {
