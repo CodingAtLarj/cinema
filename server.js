@@ -9,7 +9,7 @@ const bodyParser = require('body-parser');
 let request = require('superagent');
 
 // This will choose the correct scheme given the plattomr. darwin here means mac.
-let localdbURL = 'postgres://' + ( process.platform === 'darwin' ? '' : `postgres:${process.env.PG_PASSWORD}@` ) + 'localhost:5432/kilovolt'
+let localdbURL = 'postgres://' + (process.platform === 'darwin' ? '' : `postgres:${process.env.PG_PASSWORD}@`) + 'localhost:5432/kilovolt'
 
 const DATABASE_URL = process.env.DATABASE_URL || localdbURL;
 //requiring pg: your postgres
@@ -20,14 +20,16 @@ const dbClient = new pg.Client(DATABASE_URL);
 //connect it immediatly
 dbClient.connect();
 //check db for errors
-dbClient.on('error', function(err){
+dbClient.on('error', function(err) {
   console.error(err);
 })
 
 const app = express();
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 
 app.use(express.static('.'));
 
@@ -42,10 +44,11 @@ app.get('/github/*', function(req, res) {
   }))(req, res);
 })
 
-app.post('addFavorite',function (req, res) {
+//POST FOVORITES TO FAVORITES TABLE
+app.post('addFavorite', function(req, res) {
   dbClient.query(
-    `INSERT INTO favorites (userid, movieid, dateliked) VALUES ($1, $2, $3) ON CONFLICT DO NOTHING;`,[req.userid, req.movieid, new Date()]
-).catch(console.error)
+    `INSERT INTO favorites (userid, movieid, dateliked) VALUES ($1, $2, $3) ON CONFLICT DO NOTHING;`, [req.userid, req.movieid, new Date()]
+  ).catch(console.error)
 })
 
 function getMoviesFromApi() {
@@ -53,9 +56,6 @@ function getMoviesFromApi() {
     processMoviesResponse(res.body)
   })
 }
-
-
-//=========================================JOSE+ASH========================================================
 
 
 // GET ALL FAVORITES LIKES
@@ -78,58 +78,24 @@ app.get('/getAllUsers',function(req,res){
 });
 
 
-
-
-
-
-
-//=========================================END=============================================================
-
-
-
-
-
-//=========================================RAMI+LA========================================================
-
 //GET 12 MOVIES FROM LIST OF API MOVIES
-
-
-
-
-//POST FAVORITES TO FAVORITES TABLE
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//=========================================END=============================================================
+app.get('/get12movies', function(req, res) {
+  dbClient.query(`SELECT * FROM movies ORDER BY releasedate DESC LIMIT 12;`).then(results => res.send(results.rows))
+})
 
 function processMoviesResponse(moviesResponse) {
-  moviesResponse.results.forEach(function(movie){
+  moviesResponse.results.forEach(function(movie) {
     let url = 'https://image.tmdb.org/t/p/w500' + movie.poster_path
-    dbClient.query(`INSERT INTO movies (category, name, releasedate, urlphoto) VALUES ($1, $2, $3, $4) ON CONFLICT DO NOTHING;`,
-    ['Now Playing', movie.title, movie.release_date, url]
-      )
+    dbClient.query(`INSERT INTO movies (category, name, releasedate, urlphoto) VALUES ($1, $2, $3, $4) ON CONFLICT DO NOTHING;`, ['Now Playing', movie.title, movie.release_date, url])
   })
 }
 
 /// TODO Load the users from the github repo and insert them in the DB and update if it doesnt exist.
-function processSlackResponse(channel,allUsers){
+function processSlackResponse(channel, allUsers) {
   let class301MemberIDs = channel.channel.members
   let allUsersJSON = allUsers.members
   let class301Users = allUsersJSON.filter(function(user) {
-    if(class301MemberIDs.includes(user.id)){
+    if (class301MemberIDs.includes(user.id)) {
       if (user.deleted === true || user.real_name === '') {
         return false;
       }
@@ -140,25 +106,26 @@ function processSlackResponse(channel,allUsers){
   })
   class301Users.forEach(insertUsersIntoDb);
 }
-function fetchUsersFromSlack(){
+
+function fetchUsersFromSlack() {
   // This can be used to support additional channels or classrooms:
   // let channelsListUrl = `https://slack.com/api/channels.list?token=${SLACKTOKEN}&pretty=1`
   let classroom_id = 'C5WHR2FNG'
   let channelsInfoUrl = `https://slack.com/api/channels.info?token=${process.env.SLACKTOKEN}&channel=${classroom_id}&pretty=1`
   let usersListUrl = `https://slack.com/api/users.list?token=${process.env.SLACKTOKEN}&pretty=1 `
-  request.get(channelsInfoUrl).end( function(err, res){
+  request.get(channelsInfoUrl).end(function(err, res) {
     let channelResponse = res.body
     request.get(usersListUrl)
-   .end(function(err,res){
-     processSlackResponse(channelResponse,res.body)
-   })
+      .end(function(err, res) {
+        processSlackResponse(channelResponse, res.body)
+      })
   })
 }
 
-function loadDb(){
+function loadDb() {
   // USER Creation
   dbClient.query(
-    `CREATE TABLE IF NOT EXISTS
+      `CREATE TABLE IF NOT EXISTS
        users (
          userid SERIAL PRIMARY KEY,
          urlphoto VARCHAR(255) NOT NULL,
@@ -166,12 +133,12 @@ function loadDb(){
          course VARCHAR (255) NOT NULL
        );
     `
-  ) .then(fetchUsersFromSlack)
-  .catch(console.error);
+    ).then(fetchUsersFromSlack)
+    .catch(console.error);
 
   // Get the hard coded Movies JSON file and put it in the database
   dbClient.query(
-    `CREATE TABLE IF NOT EXISTS
+      `CREATE TABLE IF NOT EXISTS
        movies (
          movieid SERIAL PRIMARY KEY,
          category VARCHAR(255) NULL,
@@ -180,8 +147,8 @@ function loadDb(){
          urlphoto VARCHAR(255) NULL
        );
     `
-  ) .then(getMoviesFromApi)
-  .catch(console.error);
+    ).then(getMoviesFromApi)
+    .catch(console.error);
 
   dbClient.query(
     `CREATE TABLE IF NOT EXISTS
@@ -199,19 +166,21 @@ function loadDb(){
 function insertUsersIntoDb(slackUser) {
   let imageUrl = slackUser.profile.image_original || slackUser.profile.image_1024 || slackUser.profile.image_512 || slackUser.profile.image_192 || slackUser.profile.image_72
   dbClient.query(
-    `INSERT INTO users (name, urlphoto, course) VALUES ($1, $2, $3) ON CONFLICT DO NOTHING `,
-    [slackUser.real_name, imageUrl, 'seattle-301d27']
-  ), function (err) {
-    if (err) {
-      console.error(err);
+      `INSERT INTO users (name, urlphoto, course) VALUES ($1, $2, $3) ON CONFLICT DO NOTHING `, [slackUser.real_name, imageUrl, 'seattle-301d27']
+    ),
+    function(err) {
+      if (err) {
+        console.error(err);
+      }
     }
-  }
 }
 
 
 loadDb();
 app.get('*', function(req, res) {
-  res.sendFile('index.html', {root: './'});
+  res.sendFile('index.html', {
+    root: './'
+  });
 })
 
 app.listen(PORT, function() {
