@@ -18,6 +18,7 @@ function createMovieList(movies){
     movieContainer.attr(`data-category`, movie.category)
     movieContainer.attr(`data-movieid`, movie.movieid)
     movieContainer.attr(`data-releasedate`, movie.releasedate)
+    movieContainer.data('data', movie)
     mainContainer.append(movieContainer)
   })
   $('body').append(mainContainer)
