@@ -60,8 +60,13 @@ function getMoviesFromApi() {
 
 // GET ALL FAVORITES LIKES
 
-
-
+app.get('/getUserFavorites',function(req,res){
+  dbClient.query(
+    'SELECT * from favorites;'
+)
+.then(results => res.send(results.rows))
+.catch(console.error);
+});
 
 // GET ALL USERS WITH THEIR FAVORITES MOVIES
 app.get('/getAllUsers',function(req,res){
