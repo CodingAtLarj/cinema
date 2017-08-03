@@ -1,87 +1,81 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Cinema</title>
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <link rel="stylesheet" href="/vendor/reset.css">
-    <link rel="stylesheet" href="/vendor/balloon-css/balloon.min.css">
-    <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/css/base.css">
-    <link rel="stylesheet" href="/css/layout.css">
-    <link rel="stylesheet" href="/css/module.css">
-    <link rel="stylesheet" href="/css/state.css" />
-  </head>
-  <body>
-<header>
-  <nav class="nav-main">
-    <div class="icon-menu"><i class="fa fa-bars fa-lg"></i></div>
-    <ul id="nav-menu" class="nav-ul">
-      <li class="tab" data-content="home"><a href="/" class="icon-home">Home</a></li>
-      <li class="tab" data-content="results"><a href="/results">Results</a></li>
-      <li class="tab" data-content="about"><a href="/about"> About</a></li>
-    </ul>
-  </nav>
+
+<head>
+  <meta charset="utf-8">
+  <title>Cinema</title>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link rel="stylesheet" href="/vendor/reset.css">
+  <link rel="stylesheet" href="/vendor/balloon-css/balloon.min.css">
+  <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/module.css">
+  <link rel="stylesheet" href="/css/state.css" />
+</head>
+
+<body>
+  <header>
+    <nav class="nav-main">
+      <div class="icon-menu"><i class="fa fa-bars fa-lg"></i></div>
+      <ul id="nav-menu" class="nav-ul">
+        <li class="tab" data-content="home"><a href="/" class="icon-home">Home</a></li>
+        <li class="tab" data-content="results"><a href="/results">Results</a></li>
+        <li class="tab" data-content="about"><a href="/about"> About</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <div id="main-action">
+  <main>
     <h2>Choose your profile picture</h2>
-    <div class="profile"  a href="#">
-      <section id="user-pictures">
-      </section>
-  </div>
-
-  <div id="carousel-container">
-    <div id="pic-carousel">Popular Movies</div>
-  </div>
-  <div id="About_Us">
+    <div id="About_Us">
       <div class="about">
-      <div class="photo_holder">
-        <img src="About_images/Jose.jpeg" class="our_pics">
-      </div>
-        <div class="para">
-          <p class="wrap_text">Jose has come full circle back to Software Engineering. He has a broad technical background that includes web development, video editing, digital production, photography, cinematography, 3d artistry and  project management. Programing has always been an enjoyable hobby for Jose and he is excited to make it part of his career. Jose is mostly interested in mobile development using modern languages</p>
-      </div>
-    </div>
-    <div class="about">
-      <div class="photo_holder">
-        <img src="About_images/Ash.jpeg" class="our_pics">
-      </div>
-        <div class="para">
-          <p class="wrap_text">Ashwini has a bachelor’s degree in Electronics and Communication engineering and worked as a Lead engineer for an electronics device manufacturing company in India before she went on to get a Master’s degree in Networking and communication. She is excited to be a part of the Apprenti program and looking forward to starting a career as a software developer Apprentice at Microsoft.</p>
+        <div class="photo_holder">
+          <img src="About_images/Jose.jpeg" class="our_pics">
         </div>
-    </div>
-    <div class="about" id="pic_id">
-      <div class="photo_holder">
-        <img src="About_images/Ramii.jpeg" class="our_pics">
+        <div class="para">
+          <p class="wrap_text">Jose has come full circle back to Software Engineering. He has a broad technical background that includes web development, video editing, digital production, photography, cinematography, 3d artistry and project management. Programing has always
+            been an enjoyable hobby for Jose and he is excited to make it part of his career. Jose is mostly interested in mobile development using modern languages</p>
+        </div>
       </div>
+      <div class="about">
+        <div class="photo_holder">
+          <img src="About_images/Ash.jpeg" class="our_pics">
+        </div>
+        <div class="para">
+          <p class="wrap_text">Ashwini has a bachelor’s degree in Electronics and Communication engineering and worked as a Lead engineer for an electronics device manufacturing company in India before she went on to get a Master’s degree in Networking and communication.
+            She is excited to be a part of the Apprenti program and looking forward to starting a career as a software developer Apprentice at Microsoft.</p>
+        </div>
+      </div>
+      <div class="about" id="pic_id">
+        <div class="photo_holder">
+          <img src="About_images/Ramii.jpeg" class="our_pics">
+        </div>
         <div class="para">
           <p class="wrap_text">Rami is 32-years-old and originally from Tunisia. He have an associate degree in Information and Telecommunication Systems, and right now he is learning to code here at Code Fellows and super excited to be on his way to start working at Microsoft.</p>
         </div>
-    </div>
-    <div class="about" id="pic_id">
-      <div class="photo_holder">
-        <img src="About_images/La.jpeg" class="our_pics">
       </div>
+      <div class="about" id="pic_id">
+        <div class="photo_holder">
+          <img src="About_images/La.jpeg" class="our_pics">
+        </div>
         <div class="para">
           <p class="wrap_text">La has programming experience in Ruby,Python and JavaScript and loves problem-solving. She is very excited to embark on a new career and is looking forward to life at Microsoft.</p>
         </div>
-    </div>
-  </div>
-<script
-  src="https://code.jquery.com/jquery-3.2.1.min.js"
-  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  crossorigin="anonymous"></script>
-<script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
-<script src="/scripts/models/userStorage.js"></script>
-<script src="/scripts/models/model.js"></script>
-<script src="/scripts/view/moviesSelection.js"></script>
-<script src="/scripts/view/userSelection.js"></script>
-<script src="/scripts/view/results.js"></script>
-<script src="/scripts/view/mainView.js"></script>
-<script src="/scripts/view/homeView.js"></script>
-<script src="/scripts/view/aboutView.js"></script>
-<script src="/scripts/view/resultsView.js"></script>
-<script src="/scripts/controllers/routes.js"></script>
-  </body>
+      </div>
+  </main>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
+  <script src="/scripts/models/userStorage.js"></script>
+  <script src="/scripts/models/model.js"></script>
+  <script src="/scripts/view/moviesSelection.js"></script>
+  <script src="/scripts/view/userSelection.js"></script>
+  <script src="/scripts/view/results.js"></script>
+  <script src="/scripts/view/mainView.js"></script>
+  <script src="/scripts/view/homeView.js"></script>
+  <script src="/scripts/view/aboutView.js"></script>
+  <script src="/scripts/view/resultsView.js"></script>
+  <script src="/scripts/controllers/routes.js"></script>
+</body>
+
 </html>
