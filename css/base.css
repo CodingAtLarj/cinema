@@ -16,7 +16,7 @@
   margin-top: 60px;
 }
 
-/*Movies view*/
+/*---------------------------------Movies view--------------------------------*/
 h4 {
   word-wrap:break-word;
   text-align: center;
@@ -62,4 +62,31 @@ h4 {
   color: #ff0000;
   font-size: 48px;
   padding: 16px 32px;
+}
+/*----------------------------------------------------------------------------*/
+
+/* ---------------------- About_us--------------------------------------------*/
+
+.our_pics {
+
+  height: 300px;
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.wrap_text {
+  font-size: 20px;
+  text-align: left;
+}
+
+.about {
+  width: 950px;
+  height: 350px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  margin-top: 100px;
+  animation: fadeIn 6.0s ease forwards;
 }
