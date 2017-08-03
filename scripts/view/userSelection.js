@@ -8,7 +8,7 @@ function getUsers(){
 }
 
 
-function createUsersList(users,attributeType,DOMID){
+function createUsersList(users, attributeType, DOMID){
   let userContainer = $(document.createElement('div'))
   let frontContainer = userContainer.clone();
   frontContainer.attr(attributeType, DOMID)
