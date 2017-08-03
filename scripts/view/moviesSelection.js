@@ -41,7 +41,23 @@ function favMovies() {
     if($(event.target).hasClass('fa-heart-o')) {
       $(event.target).removeClass('fa-heart-o').addClass('fa-heart');
       $(event.target.parentElement.parentElement).siblings('.movie_pix').fadeTo(0, 0.3);
-      // TODO: Add to favorites table
+      if(loadLocalStorage().success) {
+        let userid = loadLocalStorage().data.userid
+        let parentDiv = $(event.target.parentElement.parentElement.parentElement)
+        let movieData = parentDiv.data('data')
+        let movieid = movieData.movieid
+        if (movieid && userid ) {
+          $.ajax({
+            url: '/addFavorite',
+            type: 'POST',
+            headers: {userid,movieid }
+          })
+        } else {
+          console.info('Invalid header. Post request not sent.')
+        }
+      } else {
+        console.info('You are not logged in. How did you get here? :)')
+      }
     } else {
       $(event.target).removeClass('fa-heart').addClass('fa-heart-o');
       $(event.target.parentElement.parentElement).siblings('.movie_pix').removeAttr('style');
