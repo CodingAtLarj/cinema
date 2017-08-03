@@ -3,6 +3,7 @@
 function getUsers(){
   $.getJSON('/getAllUsers') .then(function(usersjson){
     $('body').append(createUsersList(usersjson,'userList'));
+    selectUserHandler()
   })
 }
 
@@ -20,4 +21,19 @@ function createUsersList(users, DOMID ){
     frontContainer.append(photoContainer)
   })
   return frontContainer
+}
+
+function selectUserHandler() {
+  $('#userList div').on('click', function(event) {
+    if(!$(event.target).hasClass('.currentUser')){
+      $('#userList div').removeClass('currentUser')
+      $(this).addClass('currentUser')
+      let currentUserData = $(this).data('data')
+      localStorage.setItem('currentUser', JSON.stringify(currentUserData))
+    } else {
+      console.info('You are already logged in')
+    }
+    $('#userList').hide()
+    $('#movieList').show()
+  });
 }
