@@ -4,4 +4,4 @@ getMovies();
 getFavorites();
 getUsers();
 
-$(‘#resultsList *‘).children(‘img.stylePhoto’).addClass(‘tiny’)
+$('#resultsList *').children('img.stylePhoto').addClass('tiny')
