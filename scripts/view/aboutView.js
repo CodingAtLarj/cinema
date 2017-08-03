@@ -1,8 +1,7 @@
 'use strict';
 
-let aboutView = {}
+var aboutView = aboutView || {}
 aboutView.initAbout = function() {
-  $('#main-action').fadeOut()
   $('#movieList').fadeOut()
   $('#userList').fadeOut()
   $('#resultsList').fadeOut()

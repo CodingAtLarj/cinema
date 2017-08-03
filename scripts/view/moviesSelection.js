@@ -2,7 +2,7 @@
 
 function getMovies(){
   $.getJSON('/get12movies') .then(function(moviesjson){
-    $('body').append(createMovieList(moviesjson, 'movieList'));
+    $('main').append(createMovieList(moviesjson, 'movieList'));
     favMovies();
   })
 }
@@ -64,4 +64,12 @@ function favMovies() {
       // TODO: Remove from favorites table
     }
   });
+}
+
+
+function initMovies() {
+  $('#resultsList').fadeOut()
+  $('#About_Us').fadeOut()
+  $('#userList').fadeOut()
+  $('#movieList').fadeIn()
 }
