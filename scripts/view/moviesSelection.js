@@ -40,9 +40,11 @@ function favMovies() {
   $('.text').on('click', function(event) {
     if($(event.target).hasClass('fa-heart-o')) {
       $(event.target).removeClass('fa-heart-o').addClass('fa-heart');
+      $(event.target.parentElement.parentElement).siblings('.movie_pix').fadeTo(0, 0.3);
       // TODO: Add to favorites table
     } else {
       $(event.target).removeClass('fa-heart').addClass('fa-heart-o');
+      $(event.target.parentElement.parentElement).siblings('.movie_pix').removeAttr('style');
       // TODO: Remove from favorites table
     }
   });
