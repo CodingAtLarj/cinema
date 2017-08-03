@@ -1,16 +1,10 @@
 'use strict';
 
-var app = app || {};
-
-(function(module) {
-
-  var homeView = {};
-  homeView.initHome = function() {
-    $('.aboutMe').fadeOut();
-    $('#repos').fadeOut();
-    $('article').fadeOut();
-    $('#userList').fadeIn();
-  }
-
-  module.homeView = homeView;
-})(app);
+let homeView = {}
+homeView.initHome = function() {
+  $('#main-action').fadeOut()
+  $('#movieList').fadeOut()
+  $('#resultsList').fadeOut()
+  $('#About_Us').fadeOut()
+  $('#userList').fadeIn()
+}
