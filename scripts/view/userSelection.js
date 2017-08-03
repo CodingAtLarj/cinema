@@ -2,15 +2,15 @@
 
 function getUsers(){
   $.getJSON('/getAllUsers') .then(function(usersjson){
-    createUsersList(usersjson);
+    $('body').append(createUsersList(usersjson,'userList'));
   })
 }
 getUsers();
 
-function createUsersList(users){
+function createUsersList(users, DOMID ){
   let userContainer = $(document.createElement('div'))
   let frontContainer = userContainer.clone();
-  frontContainer.attr('id','userList')
+  frontContainer.attr('id',DOMID)
   users.forEach(function(userPix){
     let photoContainer = userContainer.clone();
     photoContainer.append(`<h4>${userPix.name}</h4>`)
@@ -20,5 +20,5 @@ function createUsersList(users){
     photoContainer.data('data', userPix)
     frontContainer.append(photoContainer)
   })
-  $('body').append(frontContainer)
+  return frontContainer
 }

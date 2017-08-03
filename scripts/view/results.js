@@ -12,19 +12,26 @@ function getFavorites() {
   });
 }
 
-function createResultsList(dictionary) {
+function createHTMlforMovieResults(singleMovieArray, users) {
   let container = $(document.createElement('div'))
-  let mainContainer = container.clone();
+  let usersDIV = createUsersList(users, '' )
+  let movieDIV = createMovieList(singleMovieArray, '')
+
+  container.append(movieDIV)
+  container.append(usersDIV)
+  return container
+}
+
+function createResultsList(dictionary) {
+  let mainContainer = $(document.createElement('div'))
   mainContainer.attr('id','resultsList');
+  $('body').append(mainContainer);
   for(let movieid in dictionary) {
     $.getJSON(`/getMovie/${movieid}`, function(singleMovieArray) {
-      let userIds = dictionary[movieid];
-      console.log('################MOVIE##########################')
-      console.log(singleMovieArray[0].name)
-      for(let id of userIds) {
-        let data =  $(`#userList div[data-userid=${id}]`).data('data')
-        console.log(data)
-      }
+      let users =  (dictionary[movieid]).map(id => {
+        return $(`#userList div[data-userid=${id}]`).data('data')
+      })
+      $('#resultsList').append(createHTMlforMovieResults(singleMovieArray, users))
     })
   }
 }
