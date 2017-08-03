@@ -1,6 +1,17 @@
 # cinema
-Movie reviews
+cinema is a movie 'likes' app. Each quarter a new  group of eager students become CodeFellow 301 cohorts. Although there are plenty of opportunities to pair program, it still takes awhile for students to get to know one another. Our app is designed to hasten the 'getting to know you' process by providing movie common interest data that can be used as an ice breaking and social activity tool.
+# about us
+## Jose Cheyo Jimenez
+Jose has come full circle back to Software Engineering. He has a broad technical background that includes web development, video editing, digital production, photography, cinematography, 3d artistry and  project management. Programing has always been an enjoyable hobby for Jose and he is excited to make it part of his career. Jose is mostly interested in mobile development using modern languages
 
+## Ashwini Rao
+Ashwini has a bachelor’s degree in Electronics and Communication engineering and worked as a Lead engineer for an electronics device manufacturing company in India before she went on to get a Master’s degree in Networking and communication. She is excited to be a part of the Apprenti program and looking forward to starting a career as a software developer Apprentice at Microsoft.
+## Rami Bououni
+Rami is 32-years-old and originally from Tunisia. He have an associate degree in Information and Telecommunication Systems, and right now he is learning to code here at Code Fellows and super excited to be on his way to start working at Microsoft.
+## La Januari
+La has programming experience in Ruby, Python and JavaScript and loves problem-solving. She is very excited to embark on a new career and is looking forward to life at Microsoft.
+
+# TECHNICAL REQUIREMENTS
 # Backend API
 
 ## POST /addFavorite
