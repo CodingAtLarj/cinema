@@ -6,4 +6,6 @@ page('/results', resultsView.initResults)
 
 page('/about', aboutView.initAbout)
 
+page('*', homeView.initHome)
+
 page()

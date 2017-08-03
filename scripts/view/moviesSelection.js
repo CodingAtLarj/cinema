@@ -2,7 +2,7 @@
 
 function getMovies(){
   $.getJSON('/get12movies') .then(function(moviesjson){
-    $('body').append(createMovieList(moviesjson, 'movieList'));
+    $('main').append(createMovieList(moviesjson, 'movieList'));
     favMovies();
   })
 }

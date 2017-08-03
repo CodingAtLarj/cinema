@@ -25,7 +25,7 @@ function createHTMlforMovieResults(singleMovieArray, users) {
 function createResultsList(dictionary) {
   let mainContainer = $(document.createElement('div'))
   mainContainer.attr('id','resultsList');
-  $('body').append(mainContainer);
+  $('main').append(mainContainer);
   for(let movieid in dictionary) {
     $.getJSON(`/getMovie/${movieid}`, function(singleMovieArray) {
       let users =  (dictionary[movieid]).map(id => {

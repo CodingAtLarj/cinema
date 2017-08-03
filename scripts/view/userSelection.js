@@ -2,7 +2,7 @@
 
 function getUsers(){
   $.getJSON('/getAllUsers') .then(function(usersjson){
-    $('body').append(createUsersList(usersjson,'userList'));
+    $('main').append(createUsersList(usersjson,'userList'));
     selectUserHandler()
   })
 }
