@@ -2,8 +2,8 @@
 
 let resultsView = {}
 resultsView.initResults = function() {
-  $('#movieList').fadeOut()
-  $('#userList').fadeOut()
-  $('#About_Us').fadeOut()
+  $('#movieList').hide()
+  $('#userList').hide()
+  $('#About_Us').hide()
   $('#resultsList').fadeIn()
 }

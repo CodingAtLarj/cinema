@@ -1,12 +1,18 @@
 'use strict';
 
 page('/', function(){
-  getUsers()
+  $('main h2').text('Choose your profile:')
+
+  if($('#userList').length === 0) {
+    getUsers()
+  }
   homeView.initHome()
 })
 
 page('/results', function(){
-  getFavorites()
+  if($('#resultsList').length === 0) {
+    getFavorites()
+  }
   $('main h2').text('These are the results for each movie:')
   resultsView.initResults()
 })
@@ -17,8 +23,11 @@ page('/about', function(){
 })
 
 page('/selectMovies', function(){
+
+  if($('#movieList').length === 0) {
+    getMovies()
+  }
   $('main h2').text('Pick the movies you like:')
-  getMovies()
   if(!loadLocalStorage().success){
     page('/')
   }else{

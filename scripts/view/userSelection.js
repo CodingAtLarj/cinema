@@ -8,7 +8,7 @@ function getUsers(){
 }
 
 
-function createUsersList(users,attributeType,DOMID){
+function createUsersList(users, attributeType, DOMID){
   let userContainer = $(document.createElement('div'))
   let frontContainer = userContainer.clone();
   frontContainer.attr(attributeType, DOMID)
@@ -17,6 +17,11 @@ function createUsersList(users,attributeType,DOMID){
     photoContainer.append(`<img class="stylePhoto" src=${userPix.urlphoto}>`)
     photoContainer.attr(`data-course`, userPix.course)
     photoContainer.attr(`data-userid`, userPix.userid)
+    let overlayContainer = userContainer.clone()
+    overlayContainer.addClass('overlayPix')
+    photoContainer.addClass('container')
+    overlayContainer.append(userPix.name)
+    photoContainer.append(overlayContainer)
     photoContainer.data('data', userPix)
     frontContainer.append(photoContainer)
   })
