@@ -2,7 +2,7 @@
 cinema is a movie 'likes' app. Each quarter a new  group of eager students become CodeFellow 301 cohorts. Although there are plenty of opportunities to pair program, it still takes awhile for students to get to know one another. Our app is designed to hasten the 'getting to know you' process by providing movie common interest data that can be used as an ice breaking and social activity tool.
 # about us
 
-## Jose Cheyo Jimenez
+# Jose Cheyo Jimenez
 Jose has come full circle back to Software Engineering. He has a broad technical background that includes web development, video editing, digital production, photography, cinematography, 3d artistry and  project management. Programing has always been an enjoyable hobby for Jose and he is excited to make it part of his career. Jose is mostly interested in mobile development using modern languages
 
 # Ashwini Rao
