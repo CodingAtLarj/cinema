@@ -33,7 +33,7 @@ function selectUserHandler() {
     } else {
       console.info('You are already logged in')
     }
-    $('#userList').hide()
-    $('#movieList').show()
+    page('/selectMovies')
+
   });
 }
