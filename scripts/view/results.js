@@ -1,5 +1,16 @@
 'use strict';
 
+<<<<<<< HEAD
+
+function getFavorites() {
+  $.getJSON('/getPeopleMoviesFavCount').then(function(favorites) {
+    let dictionary = {}
+    let value = dictionary[favObj.movieid] ? dictionary[favObj.movieid] : []
+    value.push(favObj.userid)
+    dictionary[favObj.movieid] = value
+  });
+  createResultsList(dictionary);
+=======
 function getFavorites() {
   $.getJSON('/getPeopleMoviesFavCount').then(function(favorites) {
     let dictionary = {}
@@ -20,6 +31,7 @@ function createHTMlforMovieResults(singleMovieArray, users) {
   container.append(movieDIV)
   container.append(usersDIV)
   return container
+>>>>>>> 782e15805c23870382c87a76228ba7223a3ba572
 }
 
 function createResultsList(dictionary) {
@@ -36,4 +48,21 @@ function createResultsList(dictionary) {
   }
 }
 
+
 getFavorites();
+<<<<<<< HEAD
+
+function createResultsList(dictionary) {
+  let container = $(document.createElement('div'))
+  let mainContainer = container.clone();
+  mainContainer.attr('id','resultsList');
+  for(let movieid in dictionary) {
+    let userIds = dictionary[movieid]
+  }
+
+
+
+
+}
+=======
+>>>>>>> 782e15805c23870382c87a76228ba7223a3ba572
