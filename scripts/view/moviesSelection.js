@@ -14,7 +14,7 @@ function createMovieList(movies){
   movies.forEach(function(movie){
     let movieContainer = container.clone();
     movieContainer.append(`<h1>${movie.name}</h1>`)
-    movieContainer.append(`<img src=${movie.urlphoto}>`)
+    movieContainer.append(`<img class="movie_pix" src=${movie.urlphoto}>`)
     movieContainer.attr(`data-category`, movie.category)
     movieContainer.attr(`data-movieid`, movie.movieid)
     movieContainer.attr(`data-releasedate`, movie.releasedate)
