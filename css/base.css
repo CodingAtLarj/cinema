@@ -50,6 +50,22 @@ h4 {
   text-align: center;
 }
 
+.overlayPix {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 200px;
+  height: 50px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 24px;
+  font-weight: bolder;
+  color: red;
+  text-align: center;
+
+}
+
 .container:hover .movie_pix {
   opacity: 0.3;
 }
@@ -57,7 +73,9 @@ h4 {
 .container:hover .overlay {
   opacity: 1;
 }
-
+.container:hover .overlayPix {
+  opacity: 1;
+}
 .text {
   color: #ff0000;
   font-size: 48px;
