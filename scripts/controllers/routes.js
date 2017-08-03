@@ -1,9 +1,9 @@
 'use strict';
 
-page('/', app.homeView.initHome)
+page('/', homeView.initHome)
 
-page('/results', app.resultsView.initResults)
+page('/results', resultsView.initResults)
 
-page('/about', app.aboutView.initAbout)
+page('/about', aboutView.initAbout)
 
 page()
