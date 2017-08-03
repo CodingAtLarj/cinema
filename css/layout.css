@@ -5,12 +5,12 @@
   width: 150px;
   padding: 5px;
   border-radius: 20%;
-  border: 5px solid blue;
+  border: 5px solid midnightblue;
   margin: 25px;
 }
 
 .stylePhoto:hover {
-  outline: 5px solid black;
+  outline: 5px solid green;
   outline-offset: 10px;
   webkit-transform: scale(1.3);
   ms-transform: scale(1.3);
@@ -22,7 +22,7 @@
 }
 
 body {
-  background-color: gray;
+  background-color: silver;
 }
 
 #userList div {
