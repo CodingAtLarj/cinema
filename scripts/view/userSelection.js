@@ -29,7 +29,7 @@ function selectUserHandler() {
       $('#userList div').removeClass('currentUser')
       $(this).addClass('currentUser')
       let currentUserData = $(this).data('data')
-      localStorage.setItem('currentUser', JSON.stringify(currentUserData))
+      saveLocalStorage(currentUserData)
     } else {
       console.info('You are already logged in')
     }
