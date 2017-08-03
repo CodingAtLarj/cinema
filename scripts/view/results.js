@@ -16,7 +16,7 @@ function createHTMlforMovieResults(singleMovieArray, users) {
   let container = $(document.createElement('div'))
   let usersDIV = createUsersList(users,'class','usersWhoLikeMovies' )
   let movieDIV = createOneMovie(singleMovieArray[0])
-
+  container.attr('class','moviesLiked')
   container.append(movieDIV)
   container.append(usersDIV)
   return container
