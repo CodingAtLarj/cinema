@@ -35,4 +35,3 @@ function createResultsList(dictionary) {
     })
   }
 }
-
