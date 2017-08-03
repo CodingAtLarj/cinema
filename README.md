@@ -7,7 +7,7 @@ Jose has come full circle back to Software Engineering. He has a broad technical
 ## Ashwini Rao
 Ashwini has a bachelor’s degree in Electronics and Communication engineering and worked as a Lead engineer for an electronics device manufacturing company in India before she went on to get a Master’s degree in Networking and communication. She is excited to be a part of the Apprenti program and looking forward to starting a career as a software developer Apprentice at Microsoft.
 ## Rami Bououni
-Rami is 32-years-old and originally from Tunisia. Right now he is learning to code here at Code Fellows and super excited to be on my way to start working at Microsoft.
+Rami is 32-years-old and originally from Tunisia. He have an associate degree in Information and Telecommunication Systems, and right now he is learning to code here at Code Fellows and super excited to be on his way to start working at Microsoft.
 ## La Januari
 La has programming experience in Ruby, Python and JavaScript and loves problem-solving. She is very excited to embark on a new career and is looking forward to life at Microsoft.
 
