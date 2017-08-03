@@ -199,5 +199,5 @@ app.get('*', function(req, res) {
 })
 
 app.listen(PORT, function() {
-  console.info(`App is runnig on port: ${PORT}`);
+  console.info(`App is running on port: ${PORT}`);
 })

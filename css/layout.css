@@ -1,16 +1,16 @@
 .stylePhoto {
   position: relative;
   display: inline;
-  height: 200px;
-  width: 200px;
+  height: 150px;
+  width: 150px;
   padding: 5px;
   border-radius: 20%;
-  border: 5px solid red;
+  border: 5px solid midnightblue;
   margin: 25px;
 }
 
 .stylePhoto:hover {
-  outline: 5px solid yellow;
+  outline: 5px solid green;
   outline-offset: 10px;
   webkit-transform: scale(1.3);
   ms-transform: scale(1.3);
@@ -19,4 +19,14 @@
 
 .stylePhoto {
   cursor: pointer;
+}
+
+body {
+  background-color: silver;
+}
+
+#userList div {
+  width: 250px;
+  display: inline;
+  margin: 8px 0px 8px 0px;
 }

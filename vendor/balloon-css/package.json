@@ -1,0 +1,61 @@
+{
+  "_from": "balloon-css",
+  "_id": "balloon-css@0.4.0",
+  "_inBundle": false,
+  "_integrity": "sha1-DW7fi/WV8Wsh74impnbKpaQYuVU=",
+  "_location": "/balloon-css",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "balloon-css",
+    "name": "balloon-css",
+    "escapedName": "balloon-css",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/balloon-css/-/balloon-css-0.4.0.tgz",
+  "_shasum": "0d6edf8bf595f16b21ef88a6a676caa5a418b955",
+  "_spec": "balloon-css",
+  "_where": "/home/la/Documents/301_codefellows/dossier-portfolio",
+  "author": {
+    "name": "Claudio Holanda"
+  },
+  "bugs": {
+    "url": "https://github.com/kazzkiq/balloon.css/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Simple tooltips made of pure CSS",
+  "devDependencies": {
+    "less": "^2.6.1",
+    "less-plugin-clean-css": "^1.5.1",
+    "node-sass": "^3.4.2"
+  },
+  "files": [
+    "src/balloon.scss",
+    "src/balloon.less",
+    "balloon.css",
+    "balloon.min.css"
+  ],
+  "homepage": "http://kazzkiq.github.io/balloon.css/",
+  "license": "MIT",
+  "main": "src/balloon.scss",
+  "name": "balloon-css",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kazzkiq/balloon.css.git"
+  },
+  "scripts": {
+    "build-all": "npm run build-sass && npm run build-less",
+    "build-less": "lessc src/balloon.less ./balloon.css && lessc --clean-css src/balloon.less ./balloon.min.css",
+    "build-sass": "node-sass src/balloon.scss ./balloon.css && node-sass src/balloon.scss ./balloon.min.css --output-style compressed",
+    "watch-sass": "node-sass --watch src/balloon.scss src/balloon.css"
+  },
+  "version": "0.4.0"
+}
