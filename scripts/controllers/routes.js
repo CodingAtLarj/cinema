@@ -23,7 +23,8 @@ page('/about', function(){
 })
 
 page('/selectMovies', function(){
-  if($('#moviesList').length === 0) {
+
+  if($('#movieList').length === 0) {
     getMovies()
   }
   $('main h2').text('Pick the movies you like:')
