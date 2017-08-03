@@ -5,7 +5,6 @@ function getMovies(){
     $('body').append(createMovieList(moviesjson, 'movieList'));
   })
 }
-getMovies();
 
 function createMovieList(movies, DOMID){
   let container = $(document.createElement('div'))

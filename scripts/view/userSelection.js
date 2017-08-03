@@ -5,7 +5,7 @@ function getUsers(){
     $('body').append(createUsersList(usersjson,'userList'));
   })
 }
-getUsers();
+
 
 function createUsersList(users, DOMID ){
   let userContainer = $(document.createElement('div'))
