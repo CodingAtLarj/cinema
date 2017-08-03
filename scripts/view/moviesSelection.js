@@ -65,3 +65,11 @@ function favMovies() {
     }
   });
 }
+
+
+function initMovies() {
+  $('#resultsList').fadeOut()
+  $('#About_Us').fadeOut()
+  $('#userList').fadeOut()
+  $('#movieList').fadeIn()
+}
