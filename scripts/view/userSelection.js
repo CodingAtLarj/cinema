@@ -18,11 +18,6 @@ function createUsersList(users,attributeType,DOMID){
     photoContainer.attr(`data-course`, userPix.course)
     photoContainer.attr(`data-userid`, userPix.userid)
     photoContainer.data('data', userPix)
-    let overlayContainer = userContainer.clone()
-    overlayContainer.addClass('overlayPix')
-    photoContainer.addClass('container')
-    overlayContainer.append(userPix.name)
-    photoContainer.append(overlayContainer)
     frontContainer.append(photoContainer)
   })
   return frontContainer
