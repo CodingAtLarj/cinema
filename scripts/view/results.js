@@ -36,4 +36,3 @@ function createResultsList(dictionary) {
   }
 }
 
-getFavorites();
