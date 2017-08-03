@@ -1,6 +1,8 @@
 'use strict';
 
 page('/', function(){
+  $('main h2').text('Choose your profile:')
+
   if($('#userList').length === 0) {
     getUsers()
   }
