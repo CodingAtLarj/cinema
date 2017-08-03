@@ -15,7 +15,7 @@ function createUsersList(users){
   users.forEach(function(userPix){
     let photoContainer = userContainer.clone();
     photoContainer.append(`<h4>${userPix.name}</h4>`)
-    photoContainer.append(`<img src=${userPix.urlphoto}>`)
+    photoContainer.append(`<img id="stylePhoto" src=${userPix.urlphoto}>`)
     photoContainer.attr(`pix-course`, userPix.course)
     frontContainer.append(photoContainer)
   })
