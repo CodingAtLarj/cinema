@@ -19,7 +19,7 @@ function createUsersList(users, DOMID ){
     photoContainer.attr(`data-userid`, userPix.userid)
     photoContainer.data('data', userPix)
     let overlayContainer = userContainer.clone()
-    overlayContainer.addClass('overlay')
+    overlayContainer.addClass('overlayPix')
     photoContainer.addClass('container')
     overlayContainer.append(userPix.name)
     photoContainer.append(overlayContainer)
