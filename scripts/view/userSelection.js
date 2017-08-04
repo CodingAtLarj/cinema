@@ -1,12 +1,11 @@
 'use strict';
 
-function getUsers(){
+function getUsers(){ // eslint-disable-line
   $.getJSON('/getAllUsers') .then(function(usersjson){
     $('main').append(createUsersList(usersjson,'id','userList'));
     selectUserHandler()
   })
 }
-
 
 function createUsersList(users, attributeType, DOMID){
   let userContainer = $(document.createElement('div'))
