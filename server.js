@@ -105,12 +105,13 @@ function processMoviesResponse(moviesResponse) {
   })
 }
 
-/// TODO Load the users from the github repo and insert them in the DB and update if it doesnt exist.
+/// Loads the users and inserts them in the DB and update if it doesnt exist.
 function processSlackResponse(channel, allUsers) {
-  let class301MemberIDs = channel.channel.members
+  let classMemberIDs = channel.channel.members
+  let channelName = channel.channel.name
   let allUsersJSON = allUsers.members
-  let class301Users = allUsersJSON.filter(function(user) {
-    if (class301MemberIDs.includes(user.id)) {
+  let classUsers = allUsersJSON.filter(function(user) {
+    if (classMemberIDs.includes(user.id)) {
       if (user.deleted === true || user.real_name === '') {
         return false;
       }
@@ -119,22 +120,36 @@ function processSlackResponse(channel, allUsers) {
       return false;
     }
   })
-  class301Users.forEach(insertUsersIntoDb);
+ for(let user of classUsers){
+   insertUsersIntoDb(channelName, user)
+ }
 }
 
+let classRoomName = process.env.CLASSNAME || 'seattle-301d27'
+
 function fetchUsersFromSlack() {
-  // This can be used to support additional channels or classrooms:
-  // let channelsListUrl = `https://slack.com/api/channels.list?token=${SLACKTOKEN}&pretty=1`
-  let classroom_id = 'C5WHR2FNG'
-  let channelsInfoUrl = `https://slack.com/api/channels.info?token=${process.env.SLACKTOKEN}&channel=${classroom_id}&pretty=1`
+  let channelsListUrl = `https://slack.com/api/channels.list?token=${SLACKTOKEN}&pretty=1`
   let usersListUrl = `https://slack.com/api/users.list?token=${process.env.SLACKTOKEN}&pretty=1 `
-  request.get(channelsInfoUrl).end(function(err, res) {
+  
+  request.get(channelsListUrl).end(err, res) {
+    let allChannels = res.body.channels
+    let classroom_id = 'C5WHR2FNG'
+    let channelsInfoUrl = `https://slack.com/api/channels.info?token=${process.env.SLACKTOKEN}&channel=${classroom_id}&pretty=1`
+    for(let each of allChannels) {
+      if(each.name === classRoomName) {
+        classroom_id = each.id
+        break;
+      }
+    }
+    request.get(channelsInfoUrl).end(function(err, res) {
     let channelResponse = res.body
     request.get(usersListUrl)
       .end(function(err, res) {
         processSlackResponse(channelResponse, res.body)
       })
   })
+  }
+
 }
 
 function loadDb() {
@@ -178,10 +193,10 @@ function loadDb() {
 }
 
 //this take our user object from the returning slack api call
-function insertUsersIntoDb(slackUser) {
+function insertUsersIntoDb(channelName, slackUser) {
   let imageUrl = slackUser.profile.image_original || slackUser.profile.image_1024 || slackUser.profile.image_512 || slackUser.profile.image_192 || slackUser.profile.image_72
   dbClient.query(
-      `INSERT INTO users (name, urlphoto, course) VALUES ($1, $2, $3) ON CONFLICT DO NOTHING `, [slackUser.real_name, imageUrl, 'seattle-301d27']
+      `INSERT INTO users (name, urlphoto, course) VALUES ($1, $2, $3) ON CONFLICT DO NOTHING `, [slackUser.real_name, imageUrl, channelName]
     ),
     function(err) {
       if (err) {
