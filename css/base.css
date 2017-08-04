@@ -2,6 +2,15 @@
   text-align: center;
 }
 
+/*body{
+  background: url('/background2.jpg');
+  /*background-position: center;
+  background-size: auto;
+  background-repeat: no-repeat;
+  height:auto;
+  width: 100%;*/
+/*}*/
+
 main {
   margin: 5%;
 }

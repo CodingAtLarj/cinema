@@ -39,7 +39,7 @@ page('/selectMovies', checkCurrentUserMiddleware, function() {
   }
   $('main h2').text('Pick the movies you like:')
   if (!loadLocalStorage().success) {
-    page('/')
+    window.location.href = '/'
   } else {
     initMovies()
   }
