@@ -1,5 +1,5 @@
 /* Navigation for larger screens */
-@media (min-width:700px) {
+@media (min-width:1024px) {
   .icon-menu {
      display:none;
   }
@@ -11,14 +11,45 @@
      padding: 0 5%;
      border-bottom: none;
   }
+  #nav-menu li a{
+    text-decoration: none;
+    margin-top: 5%;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 25px;
+    color: white;
+    transition: 0.5s;
+  }
 }
-
-@media (max-width:699px) {
+/*------------------- Phones--------------------------------------------------*/
+@media (max-width:667px) {
   #nav-menu {
     display: none;
   }
 
   .nav-main:hover #nav-menu {
     display: block;
+  }
+}
+/*--------------------Tablet size---------------------------------------------*/
+@media only screen and (min-width: 667px)
+and (max-width:1024px) {
+  .icon-menu {
+     display:none;
+  }
+  .nav-main ul {
+     display:block;
+  }
+  .nav-main li {
+     display:inline;
+     padding: 0 0.5%;
+     border-bottom: none;
+  }
+  #nav-menu li a{
+    text-decoration: none;
+    margin-top: 5%;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 20px;
+    color: white;
+    transition: 0.5s;
   }
 }
