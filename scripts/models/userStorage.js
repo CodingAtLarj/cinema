@@ -1,6 +1,6 @@
 'use strict'
 
-function loadLocalStorage() {
+function loadLocalStorage() { // eslint-disable-line
   let rawData = localStorage.getItem('currentUser');
   if (rawData !== null) {
     let data = JSON.parse(rawData)
@@ -16,11 +16,11 @@ function loadLocalStorage() {
   }
 }
 
-function saveLocalStorage(data) {
+function saveLocalStorage(data) { // eslint-disable-line
   localStorage.setItem('currentUser', JSON.stringify(data))
 }
 
-function logoutUser() {
+function logoutUser() { // eslint-disable-line
   localStorage.removeItem('currentUser')
   page('/')
 }

@@ -1,6 +1,6 @@
 'use strict';
 
-function getFavorites() {
+function getFavorites() { // eslint-disable-line
   $.getJSON('/getPeopleMoviesFavCount').then(function(favorites) {
     let dictionary = {}
     favorites.forEach( function(favObj){
