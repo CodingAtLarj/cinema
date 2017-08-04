@@ -15,19 +15,19 @@
   webkit-transform: scale(1.3);
   ms-transform: scale(1.3);
   transform: scale(1.3);
+
 }
 
 .stylePhoto {
   cursor: pointer;
 }
-
 body {
   background-color: silver;
 }
 
 #userList div {
   width: 250px;
-  display: inline;
+  display: inline-block;
   margin: 8px 0px 8px 0px;
 }
 
