@@ -6,7 +6,7 @@
   padding: 5px;
   border-radius: 20%;
   border: 5px solid midnightblue;
-  margin: 45px 25px 8px 25px;
+  margin: 30px 25px 8px 25px;
 }
 
 .stylePhoto:hover {
@@ -30,6 +30,7 @@ body {
   display: inline;
   margin: 8px 0px 8px 0px;
 }
+
 @media only screen and (max-width: 450px) {
   div {
     display: inline-block;
@@ -37,4 +38,3 @@ body {
   h2 {
     text-align: center;
   }
-}
