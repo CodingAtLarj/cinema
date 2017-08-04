@@ -13,7 +13,7 @@ page('/results', function(){
   if($('#resultsList').length === 0) {
     getFavorites()
   }
-  $('main h2').text('These are the results for each movie:')
+  $('main h2').text('Check out who else liked those movies:')
   resultsView.initResults()
 })
 

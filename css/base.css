@@ -2,6 +2,14 @@
   text-align: center;
 }
 
+main {
+  margin: 5%;
+}
+
+h2 {
+  font-family: 'Bowlby One SC', cursive;
+}
+
 #carousel-container {
    text-align: center;
 }
@@ -21,6 +29,35 @@
 h4 {
   word-wrap:break-word;
   text-align: center;
+}
+
+#resultsButton {
+  width:200px;
+  height: 50px;
+  background-color: #184753;
+  color: white;
+  position: relative;
+  margin-top: 50px;
+  left: 50%;
+}
+#resultsButton a {
+  color: white;
+  text-decoration: none !important;
+  font-family: 'Julee', cursive;
+  font-size: 20px;
+}
+
+#movieList .container {
+  margin-bottom: 50px;
+}
+
+#movieList .container h4 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 20px;
+}
+
+header {
+  margin-top: 5%;
 }
 
 .container {

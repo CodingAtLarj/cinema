@@ -36,7 +36,7 @@ function createMovieList(movies, DOMID){
   movies.forEach(function(movie){
     mainContainer.append(createOneMovie(movie))
   })
-  mainContainer.append(`<button type="button" id="resultsButton"><a href="/results">Next Page</a></button>`)
+  mainContainer.append(`<button type="button" id="resultsButton"><a href="/results">Results</a></button>`)
   return mainContainer
 }
 
