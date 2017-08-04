@@ -16,6 +16,13 @@
   margin-top: 60px;
 }
 
+#logout {
+  top: 0px;
+  right: 0px;
+  position: fixed;
+  z-index: 9999;
+}
+
 /*---------------------------------Movies view--------------------------------*/
 
 h4 {
@@ -140,4 +147,12 @@ h4 {
 
   display: inline-block;
   float:left;
+}
+
+#logout {
+  background-color: lightblue;
+  font-family: 'Raleway', sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 12px;
 }
