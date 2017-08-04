@@ -30,6 +30,8 @@ body {
   display: inline;
   margin: 8px 0px 8px 0px;
 }
-.balloon {
-  z-index: 25;
+@media only screen and (max-width: 450px) {
+  div {
+    display: block;
+  }
 }
