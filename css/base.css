@@ -2,6 +2,15 @@
   text-align: center;
 }
 
+
+main {
+  margin: 5%;
+}
+
+h2 {
+  font-family: 'Bowlby One SC', cursive;
+}
+
 #carousel-container {
    text-align: center;
 }
