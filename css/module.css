@@ -3,8 +3,22 @@
 #nav-menu{
   text-align: center;
 }
-.nav-main ul {
+.nav-main ul{
   list-style-type: none;
+}
+
+#nav-menu li a{
+  text-decoration: none;
+  margin-top: 5%;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 25px;
+  color: white;
+  transition: 0.5s;
+}
+
+#nav-menu li a:hover {
+  color: black;
+  transition: 0.5s;
 }
 
 .nav-main li {
