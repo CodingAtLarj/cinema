@@ -12,6 +12,17 @@ Rami is 32-years-old and originally from Tunisia. He have an associate degree in
 La has programming experience in Ruby, Python and JavaScript and loves problem-solving. She is very excited to embark on a new career and is looking forward to life at Microsoft.
 
 # TECHNICAL REQUIREMENTS
+## Link to Depoloyed Site:
+
+  https://codeflicks.herokuapp.com/
+
+## External API
+    Slack API:
+    https://api.slack.com/
+
+    The Movie Database API:
+    https://developers.themoviedb.org/
+
 # Backend API
 
 ## POST /addFavorite
