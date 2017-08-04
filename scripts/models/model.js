@@ -1,6 +1,6 @@
 'use strict';
 
-class User {
+class User { // eslint-disable-line
   constructor(userid, urlphoto, name, course){
     this.userid = userid,
     this.urlphoto = urlphoto,
@@ -9,7 +9,7 @@ class User {
   }
 }
 
-class Movie {
+class Movie { // eslint-disable-line
   constructor(movieid, category, name, releasedate, urlphoto) {
     this.category = category,
     this.name = name,

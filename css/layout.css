@@ -14,7 +14,6 @@
   ms-transform: scale(1.3);
   transform: scale(1.5);
   transition: 0.5s;
-
 }
 
 .stylePhoto {
@@ -29,11 +28,3 @@ body {
   display: inline-block;
   margin: 8px 0px 8px 0px;
 }
-
-@media only screen and (max-width: 450px) {
-  div {
-    display: inline-block;
-  }
-  h2 {
-    text-align: center;
-  }

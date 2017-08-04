@@ -20,9 +20,8 @@ page('/', checkCurrentUserMiddleware, function() {
 })
 
 page('/results', checkCurrentUserMiddleware, function() {
-  if ($('#resultsList').length === 0) {
-    getFavorites()
-  }
+  $('#resultsList').remove()
+  getFavorites()
   $('main h2').text('Check out who else liked these movies:')
   resultsView.initResults()
 })

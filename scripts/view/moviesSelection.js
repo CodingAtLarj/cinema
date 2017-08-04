@@ -1,6 +1,6 @@
 'use strict'
 
-function getMovies(){
+function getMovies(){ // eslint-disable-line
   $.getJSON('/get12movies') .then(function(moviesjson){
     $('main').append(createMovieList(moviesjson, 'movieList'));
     favMovies();
@@ -65,13 +65,12 @@ function favMovies() {
     } else {
       $(event.target).removeClass('fa-heart').addClass('fa-heart-o');
       $(event.target.parentElement.parentElement).siblings('.movie_pix').removeAttr('style');
-      // TODO: Remove from favorites table
     }
   });
 }
 
 
-function initMovies() {
+function initMovies() { // eslint-disable-line
   $('#resultsList').fadeOut()
   $('#About_Us').fadeOut()
   $('#userList').fadeOut()

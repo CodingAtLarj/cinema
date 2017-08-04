@@ -2,7 +2,6 @@
   text-align: center;
 }
 
-
 main {
   margin: 5%;
 }
@@ -25,11 +24,47 @@ h2 {
   margin-top: 60px;
 }
 
+#logout {
+  top: 0px;
+  right: 0px;
+  position: fixed;
+  z-index: 9999;
+}
+
 /*---------------------------------Movies view--------------------------------*/
-/*--------------------Inspiration from W3 Schools-----------------------------*/
+
 h4 {
   word-wrap:break-word;
   text-align: center;
+}
+
+#resultsButton {
+  width:200px;
+  height: 50px;
+  background-color: #184753;
+  color: white;
+  position: relative;
+  margin-top: 50px;
+  left: 50%;
+}
+#resultsButton a {
+  color: white;
+  text-decoration: none !important;
+  font-family: 'Julee', cursive;
+  font-size: 20px;
+}
+
+#movieList .container {
+  margin-bottom: 50px;
+}
+
+#movieList .container h4 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 20px;
+}
+
+header {
+  margin-top: 5%;
 }
 
 .container {
@@ -93,7 +128,6 @@ h4 {
   font-size: 48px;
   padding: 16px 32px;
 }
-
 /*----------------------------------------------------------------------------*/
 
 /* ---------------------- About_us--------------------------------------------*/
@@ -101,32 +135,41 @@ h4 {
 .our_pics {
   height: 300px;
   width: 300px;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-  float:left;
-  padding-right: 50px;
+  margin-right: 10px;
+  border-radius: 50%;
+  border: 1px solid black;
 }
 
 .wrap_text {
-clear: : right;
-font-size: 20px;
-/*margin-top:10%;*/
-/*position: relative;
-top: 10%;*/
-padding: 80px;
-
-
+  font-size: 20px;
+  width: 60%;
+  text-align: justify;
+  position: relative;
+  bottom: 250px;
+  right: 15%;
+  float: right;
+  clear: both;
 }
 
-.about {
-  width: 950px;
-  height: 350px;
-  margin-left: auto;
-  margin-right: auto;
-  display:block;
-  margin-top: 80px;
-  animation: fadeIn 6.0s ease forwards;
+
+.photo_holder img{
+  margin-bottom: 3%;
+  margin-top: 3%;
+  float: left;
+  clear: both;
+}
+
+#About_Us {
+  animation: fade 4s ease forwards;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 /*------------------------Results view ---------------------------------------*/
 
@@ -148,13 +191,24 @@ padding: 80px;
 .moviesLiked {
   display:inline-block;
   width: 1200px;
-  height: 400px;
+  height: 50%;
   border:1px solid black;
 
 }
 
 .moviesLiked div {
-
   display: inline-block;
   float:left;
+}
+
+#logout {
+  background-color: lightblue;
+  font-family: 'Raleway', sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 12px;
+}
+
+.usersWhoLikeMovies div.container {
+  margin: -20px;
 }

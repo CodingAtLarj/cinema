@@ -1,6 +1,6 @@
 'use strict';
 
-function getFavorites() {
+function getFavorites() { // eslint-disable-line
   $.getJSON('/getPeopleMoviesFavCount').then(function(favorites) {
     let dictionary = {}
     favorites.forEach( function(favObj){
@@ -26,12 +26,24 @@ function createResultsList(dictionary) {
   let mainContainer = $(document.createElement('div'))
   mainContainer.attr('id','resultsList');
   $('main').append(mainContainer);
+  let movieIdorder = []
   for(let movieid in dictionary) {
-    $.getJSON(`/getMovie/${movieid}`, function(singleMovieArray) {
-      let users =  (dictionary[movieid]).map(id => {
-        return $(`#userList div[data-userid=${id}]`).data('data')
-      })
-      $('#resultsList').append(createHTMlforMovieResults(singleMovieArray, users))
-    })
+    let order = (dictionary[movieid]).length
+    movieIdorder.push({movieid, order})
   }
+  movieIdorder.sort((a, b) => {
+    let left = parseInt(a.order, 10)
+    let right = parseInt(b.order, 10)
+    return left === right ? 0 : a.order > right ? -1 : 1
+  })
+
+  movieIdorder.map(idorder => idorder.movieid)
+    .forEach(movieid => {
+      $.getJSON(`/getMovie/${movieid}`, function(singleMovieArray) {
+        let users =  (dictionary[movieid]).map(id => {
+          return $(`#userList div[data-userid=${id}]`).data('data')
+        })
+        $('#resultsList').append(createHTMlforMovieResults(singleMovieArray, users))
+      })
+    })
 }
