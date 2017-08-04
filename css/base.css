@@ -212,13 +212,12 @@ header {
 .moviesLiked {
   display:inline-block;
   width: 1200px;
-  height: 400px;
+  height: 50%;
   border:1px solid black;
 
 }
 
 .moviesLiked div {
-
   display: inline-block;
   float:left;
 }
@@ -229,4 +228,8 @@ header {
   font-size: 18px;
   font-weight: bold;
   border-radius: 12px;
+}
+
+.usersWhoLikeMovies div.container {
+  margin: -20px;
 }
