@@ -128,10 +128,10 @@ function processSlackResponse(channel, allUsers) {
 let classRoomName = process.env.CLASSNAME || 'seattle-301d27'
 
 function fetchUsersFromSlack() {
-  let channelsListUrl = `https://slack.com/api/channels.list?token=${SLACKTOKEN}&pretty=1`
+  let channelsListUrl = `https://slack.com/api/channels.list?token=${process.env.SLACKTOKEN}&pretty=1`
   let usersListUrl = `https://slack.com/api/users.list?token=${process.env.SLACKTOKEN}&pretty=1 `
-  
-  request.get(channelsListUrl).end(err, res) {
+
+  request.get(channelsListUrl).end(function(err, res) {
     let allChannels = res.body.channels
     let classroom_id = 'C5WHR2FNG'
     let channelsInfoUrl = `https://slack.com/api/channels.info?token=${process.env.SLACKTOKEN}&channel=${classroom_id}&pretty=1`
@@ -142,13 +142,13 @@ function fetchUsersFromSlack() {
       }
     }
     request.get(channelsInfoUrl).end(function(err, res) {
-    let channelResponse = res.body
-    request.get(usersListUrl)
-      .end(function(err, res) {
-        processSlackResponse(channelResponse, res.body)
-      })
+      let channelResponse = res.body
+      request.get(usersListUrl)
+        .end(function(err, res) {
+          processSlackResponse(channelResponse, res.body)
+        })
+    })
   })
-  }
 
 }
 
