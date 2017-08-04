@@ -6,7 +6,7 @@
   padding: 5px;
   border-radius: 20%;
   border: 5px solid midnightblue;
-  margin: 45px 25px 8px 25px;
+  margin: 30px 25px 8px 25px;
 }
 
 .stylePhoto:hover {
@@ -29,4 +29,7 @@ body {
   width: 250px;
   display: inline;
   margin: 8px 0px 8px 0px;
+}
+.balloon {
+  z-index: 25;
 }

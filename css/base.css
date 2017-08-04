@@ -89,17 +89,17 @@ h4 {
 /* ---------------------- About_us--------------------------------------------*/
 
 .our_pics {
-
   height: 300px;
   width: 300px;
   margin-left: auto;
   margin-right: auto;
   display: block;
+  float:left;
+
 }
 
 .wrap_text {
-  font-size: 20px;
-  text-align: left;
+float: right;
 }
 
 .about {
@@ -124,7 +124,7 @@ h4 {
 
 .usersWhoLikeMovies div {
   display: inline-block;
-  transform: scale(0.6, 0.6);
+  transform: scale(0.7, 0.7);
   float:left;
 }
 
