@@ -130,3 +130,11 @@ h4 {
 #userList {
   display:inline;
 }
+
+#logout {
+  background-color: lightblue;
+  font-family: 'Raleway', sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 12px;
+}
