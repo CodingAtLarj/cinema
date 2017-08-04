@@ -134,13 +134,13 @@ function fetchUsersFromSlack() {
   request.get(channelsListUrl).end(function(err, res) {
     let allChannels = res.body.channels
     let classroom_id = 'C5WHR2FNG'
-    let channelsInfoUrl = `https://slack.com/api/channels.info?token=${process.env.SLACKTOKEN}&channel=${classroom_id}&pretty=1`
     for(let each of allChannels) {
       if(each.name === classRoomName) {
         classroom_id = each.id
         break;
       }
     }
+    let channelsInfoUrl = `https://slack.com/api/channels.info?token=${process.env.SLACKTOKEN}&channel=${classroom_id}&pretty=1`
     request.get(channelsInfoUrl).end(function(err, res) {
       let channelResponse = res.body
       request.get(usersListUrl)
@@ -149,7 +149,6 @@ function fetchUsersFromSlack() {
         })
     })
   })
-
 }
 
 function loadDb() {
