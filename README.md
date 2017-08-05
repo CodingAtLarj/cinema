@@ -29,6 +29,7 @@ La has programming experience in Ruby, Python and JavaScript and loves problem-s
 
 You will need these environment variables:
 
+* DATABASE_URL
 * MOVIEDBTOKEN
 * SLACKTOKEN
 * CLASSNAME
