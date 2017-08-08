@@ -25,6 +25,18 @@ La has programming experience in Ruby, Python and JavaScript and loves problem-s
 
 # Backend API
 
+### Deploy a heroku or similar site
+
+You will need these environment variables:
+
+* DATABASE_URL
+* MOVIEDBTOKEN
+* SLACKTOKEN
+* CLASSNAME
+
+Class name is the channel name as it appears in slack.
+
+
 ## POST /addFavorite
 
 You need to send two headers keys value pair:
