@@ -18,8 +18,8 @@
   },
   "homepage": "https://github.com/CodingAtLarj/cinema#readme",
   "dependencies": {
-    "body-parser": "^1.17.2",
-    "express": "^4.15.3",
+    "body-parser": "^1.20.1",
+    "express": "^4.18.2",
     "express-request-proxy": "^2.0.0",
     "page": "^1.7.1",
     "pg": "^7.0.2",
